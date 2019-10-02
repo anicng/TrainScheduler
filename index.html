@@ -20,6 +20,45 @@
 
 <body>
 
+    <div class="container">
+        <!-- header -->
+        <div class="jumbotron text-center">
+            <h1>Train Schedule</h1>
+        </div>
+        <!-- current train schedule  -->
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Current Schedule</li>
+
+            <li class="list-group-item ">Item 1</li>
+
+        </ul>
+        <br>
+        <!-- add train schedule -->
+        <form action="">
+            <div class="form-group">
+                <label for="train-name">Train Name</label>
+                <input type="text" class="form-control" id="train-name" placeholder="Enter Train Name">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" id="destination" placeholder="Enter a City">
+            </div>
+            <div class="form-group">
+                <label for="first-train-time">First Train Time</label>
+                <input type="text" class="form-control" id="first-train-time" placeholder="HH:mm military time">
+            </div>
+            <div class="form-group">
+                <label for="frequency">Frequency</label>
+                <input type="text" class="form-control" id="frequency" placeholder="Frequency (min)">
+            </div>
+
+            <button type="submit" class="btn btn-success" id="submit-button">Submit</button>
+        </form>
+
+    </div>
+
+
     <!-- javascript  -->
     <script type="text/javascript" src="javascript/app.js"></script>
     <!-- Bootstrap  -->

@@ -37,6 +37,11 @@ $(document).ready(
                 firstTrainTime: firstTrainTime,
                 frequency: frequency
             })
+            // clean out the input field after input
+            $("#train-name").val("")
+            $("#destination").val("");
+            $("#first-train-time").val("");
+            $("#frequency").val("");
         })
 
 

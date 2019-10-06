@@ -1,3 +1,4 @@
+// firebase config
 var firebaseConfig = {
     apiKey: "AIzaSyAnGXSMsz0EnaGllNMGeoz4XVjneCJJzxI",
     authDomain: "trainschedule-c0c61.firebaseapp.com",
@@ -6,31 +7,28 @@ var firebaseConfig = {
     storageBucket: "trainschedule-c0c61.appspot.com",
     messagingSenderId: "414807725496",
     appId: "1:414807725496:web:1e1bd5a9454a5acf0b2b4d"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 $(document).ready(
     function trainSchedule() {
-        var trainName
-        var destination
-        var firstTrainTime
-        var frequency
-
         // when submit button click
         $("#submit-button").on("click", function (e) {
             e.preventDefault();
             // get the values from input field
-            trainName = $("#train-name").val().trim();
+            var trainName = $("#train-name").val().trim();
             console.log(trainName);
-            destination = $("#destination").val().trim();
+            var destination = $("#destination").val().trim();
             console.log(destination);
-            firstTrainTime = $("#first-train-time").val();
+            var firstTrainTime = $("#first-train-time").val();
             console.log(firstTrainTime);
-            frequency = $("#frequency").val();
+            var frequency = $("#frequency").val();
             console.log(frequency);
 
+            nextArrivalCalculator();
+            // pushing multiple lines of data to db
             database.ref().push({
                 trainName: trainName,
                 destination: destination,
@@ -42,8 +40,15 @@ $(document).ready(
             $("#destination").val("");
             $("#first-train-time").val("");
             $("#frequency").val("");
-        })
+        });
 
+        function nextArrivalCalculator(){
+            var now = moment();
+            console.log (now);
+            // var nextArrival = 
+
+        };
+ 
 
 
     }

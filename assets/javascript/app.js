@@ -1,4 +1,4 @@
-  var firebaseConfig = {
+var firebaseConfig = {
     apiKey: "AIzaSyAnGXSMsz0EnaGllNMGeoz4XVjneCJJzxI",
     authDomain: "trainschedule-c0c61.firebaseapp.com",
     databaseURL: "https://trainschedule-c0c61.firebaseio.com",
@@ -6,10 +6,10 @@
     storageBucket: "trainschedule-c0c61.appspot.com",
     messagingSenderId: "414807725496",
     appId: "1:414807725496:web:1e1bd5a9454a5acf0b2b4d"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database();
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
 
 $(document).ready(
     function trainSchedule() {
@@ -17,7 +17,7 @@ $(document).ready(
         var destination
         var firstTrainTime
         var frequency
-        
+
         // when submit button click
         $("#submit-button").on("click", function (e) {
             e.preventDefault();
@@ -26,11 +26,20 @@ $(document).ready(
             console.log(trainName);
             destination = $("#destination").val().trim();
             console.log(destination);
-            firstTrainTime = $("#first-train-time").val().trim();
+            firstTrainTime = $("#first-train-time").val();
             console.log(firstTrainTime);
-            frequency = $("frequency").val().trim();
+            frequency = $("#frequency").val();
             console.log(frequency);
+
+            database.ref().push({
+                trainName: trainName,
+                destination: destination,
+                firstTrainTime: firstTrainTime,
+                frequency: frequency
+            })
         })
+
+
 
     }
 

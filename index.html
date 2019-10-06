@@ -15,7 +15,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GifTastic</title>
+    <title>Train Schedule</title>
 </head>
 
 <body>
@@ -26,14 +26,33 @@
             <h1>Train Schedule</h1>
         </div>
         <!-- current train schedule  -->
+        <table class="table table-success">
+            <thead>
+                <tr>
+                    <th scope="col">Train Name</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Frequency(min)</th>
+                    <th scope="col">Next Arrival</th>
+                    <th scope="col">Minutes Away</th>
 
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-success">Current Schedule</li>
+                </tr>
+            </thead>
+            <tbody>
 
-            <li class="list-group-item ">Item 1</li>
-
-        </ul>
+            </tbody>
+        </table>
         <br>
+
+        <!-- <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Add Train
+                </div>
+                <div class="panel-body">
+                    Test
+                </div>
+            </div>
+        </div> -->
         <!-- add train schedule -->
         <form action="">
             <div class="form-group">
@@ -46,15 +65,16 @@
             </div>
             <div class="form-group">
                 <label for="first-train-time">First Train Time</label>
-                <input type="text" class="form-control" id="first-train-time" placeholder="HH:mm military time">
+                <input type="time" class="form-control" id="first-train-time" placeholder="HH:mm military time">
             </div>
             <div class="form-group">
                 <label for="frequency">Frequency</label>
-                <input type="text" class="form-control" id="frequency" placeholder="Frequency (min)">
+                <input type="number" class="form-control" id="frequency" placeholder="Frequency (min)">
             </div>
 
             <button type="submit" class="btn btn-success" id="submit-button">Submit</button>
         </form>
+    </div>
 
     </div>
 

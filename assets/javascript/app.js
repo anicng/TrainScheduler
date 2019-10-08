@@ -45,6 +45,8 @@ $(document).ready(
                 var nextArrivalDisplay = $("<td>");
                 var minAwayDisplay = $("<td>");
                 var firstTrain = childSnapshot.val().firstTrainTime;
+                var frequency = childSnapshot.val().frequency;
+
                 console.log("trainName: " + childSnapshot.val().trainName);
                 console.log("destination: " + childSnapshot.val().destination);
                 console.log("firstTrainTime: " + childSnapshot.val().firstTrainTime);
@@ -53,16 +55,25 @@ $(document).ready(
 
                 // firstTrainInput = childSnapshot.val().firstTrainTime.format("HH:mm");
                 // console.log ("firstTrainInput:" + firstTrainInput);
+
                 var now = moment();
                 console.log("Now" + now);
-                var minTillNextArrival = parseInt(now.diff(firstTrain, "minutes"));
+
+                var firstTrainTimeConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+                console.log (firstTrainTimeConverted);
+
+                var minTillNextArrival = now.diff(moment(firstTrainTimeConverted), "minutes");
                 console.log("Min till next arrival:" + minTillNextArrival);
-                var remainingMinutes = parseInt(minTillNextArrival % frequency);
+
+                var remainingMinutes = minTillNextArrival % frequency;
                 console.log("remainingMinutes" + remainingMinutes);
-                var minAway = parseInt(frequency - remainingMinutes);
+
+                var minAway = frequency - remainingMinutes;
                 console.log("minAway" + minAway);
+
                 var nextArrival = now.add(minAway, "minutes");
-                console.log("nextArrival" + nextArrival);
+                console.log("nextArrival" + moment(nextArrival).format("hh:mm"));
+
                 var nextArrivalTime = nextArrival.format("HH:mm");
                 console.log("nextArrivalTime" + nextArrivalTime);
 
@@ -70,7 +81,7 @@ $(document).ready(
                 console.log("Train Name: "+childSnapshot.val().trainName);
                 destinationDisplay.text(childSnapshot.val().destination);
                 frequencyDisplay.text(childSnapshot.val().frequency + "min");
-                nextArrivalDisplay.text(nextArrivalTime);
+                nextArrivalDisplay.text(nextArrival);
                 minAwayDisplay.text(minAway);
                 newRow.append(trainNameDisplay, destinationDisplay, frequencyDisplay, nextArrivalDisplay, minAwayDisplay);
                 $(".table-body").append(newRow);

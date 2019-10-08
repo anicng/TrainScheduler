@@ -81,7 +81,7 @@ $(document).ready(
                 console.log("Train Name: "+childSnapshot.val().trainName);
                 destinationDisplay.text(childSnapshot.val().destination);
                 frequencyDisplay.text(childSnapshot.val().frequency + "min");
-                nextArrivalDisplay.text(nextArrival);
+                nextArrivalDisplay.text(nextArrival.format("HH:mm"));
                 minAwayDisplay.text(minAway);
                 newRow.append(trainNameDisplay, destinationDisplay, frequencyDisplay, nextArrivalDisplay, minAwayDisplay);
                 $(".table-body").append(newRow);
